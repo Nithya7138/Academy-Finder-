@@ -41,7 +41,7 @@ export default function AcademicCard({
         </div>
 
 
-        <p className="text-gray-600 mb-1">📍 {address.line1}, {address.city}, {address.state}, {address.zip}</p>
+        <p className="text-gray-600 mb-1">📍 {address.line1}, {address.city}, {address.state}, {address.zip_code}</p>
         <p className="text-gray-700 mb-2">📞 {phone}</p>
 
 

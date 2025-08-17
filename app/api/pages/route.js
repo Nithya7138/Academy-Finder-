@@ -1,5 +1,5 @@
 import dbconnect from "../../../utils/connectMongos";
-import Academic from "../academics.model";
+import Academic from "../models/academics.model";
 
 export default async function handler(req, res) {
   await dbconnect();
