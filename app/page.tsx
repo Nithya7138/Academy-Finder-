@@ -21,8 +21,7 @@ export default function HomePage() {
   const filteredData = data.filter((academy) => {
     const searchLower = search.toLowerCase();
 
-    // ✅ only check text fields
-    const matchesSearch =
+       const matchesSearch =
       academy.name.toLowerCase().includes(searchLower) ||
       academy.type.toLowerCase().includes(searchLower) ||
       academy.address.city.toLowerCase().includes(searchLower) ||
