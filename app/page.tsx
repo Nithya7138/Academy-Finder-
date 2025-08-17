@@ -1,138 +1,3 @@
-// "use client";
-
-// import { useEffect, useState } from "react";
-// import axios from "axios";
-// import AcademicCard from "./academiccard";
-// import { Academic } from "./type";
-
-// export default function HomePage() {
-//   const [data, setData] = useState<Academic[]>([]);
-//   const [search, setSearch] = useState(""); 
-
-//   useEffect(() => {
-//     axios
-//       .get<Academic[]>("/api/academic")
-//       .then((res) => setData(res.data))
-//       .catch((err) => console.error(err));
-//   }, []);
-
-
-//   const filteredData = data.filter(
-//     (academy) =>
-//       academy.address.city.toLowerCase().includes(search.toLowerCase()) ||
-//       academy.name.toLowerCase().includes(search.toLowerCase()) ||
-//       academy.type.toLowerCase().includes(search.toLowerCase()) ||
-//       academy.average_rating?.toString().includes(search.toLowerCase())
-//   );
-
-//   return (
-//     <div className="container mx-auto px-4 py-8">
-//       <h1 className="text-3xl font-bold mb-6 text-center">Academy</h1>
-
-
-//       <div className="flex justify-center mb-8">
-//         <input
-//           type="text"
-//           placeholder="Search by city, name, type or rating..."
-//           value={search}
-//           onChange={(e) => setSearch(e.target.value)}
-//           className="w-full md:w-1/2 p-3 border rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-//         />
-//       </div>
-
-
-//       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-//         {filteredData.length > 0 ? (
-//           filteredData.map((academy, index) => (
-//             <AcademicCard key={index} {...academy} />
-//           ))
-//         ) 
-//         : (
-//           <p className="col-span-3 text-center text-gray-500">
-//             No academies found.
-//           </p>
-//         )}
-//       </div>
-//     </div>
-//   );
-// }
-
-
-
-// "use client";
-
-// import { useEffect, useState } from "react";
-// import axios from "axios";
-// import AcademicCard from "./academiccard";
-// import { Academic } from "./type";
-
-// export default function HomePage() {
-//   const [data, setData] = useState<Academic[]>([]);
-//   const [search, setSearch] = useState(""); 
-
-//   useEffect(() => {
-//     axios
-//       .get<Academic[]>("/api/academic")
-//       .then((res) => setData(res.data))
-//       .catch((err) => console.error(err));
-//   }, []);
-
-//   const filteredData = data.filter((academy) => {
-//     const searchLower = search.toLowerCase();
-
-//     // ✅ string-based search
-//     const matchesString =
-//       academy.name.toLowerCase().includes(searchLower) ||
-//       academy.type.toLowerCase().includes(searchLower) ||
-//       academy.address.city.toLowerCase().includes(searchLower);
-
-//     // ✅ rating-based search
-//     let matchesRating = true;
-//     if (search && !isNaN(Number(search))) {
-//       const searchNum = Number(search); // 👈 convert to number
-
-//       if (Number.isInteger(searchNum)) {
-//         // If integer → match academies with that integer "bucket"
-//         matchesRating = Math.floor(academy.average_rating ?? 0) === searchNum;
-//       } else {
-//         // If decimal → exact match
-//         matchesRating = (academy.average_rating ?? 0) === searchNum;
-//       }
-//     }
-
-//     return matchesString || matchesRating;
-//   });
-
-//   return (
-//     <div className="container mx-auto px-4 py-8">
-//       <h1 className="text-3xl font-bold mb-6 text-center">Academy</h1>
-
-//       <div className="flex justify-center mb-8">
-//         <input
-//           type="text"
-//           placeholder="Search by city, name, type or rating..."
-//           value={search}
-//           onChange={(e) => setSearch(e.target.value)}
-//           className="w-full md:w-1/2 p-3 border rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-//         />
-//       </div>
-
-//       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-//         {filteredData.length > 0 ? (
-//           filteredData.map((academy, index) => (
-//             <AcademicCard key={index} {...academy} />
-//           ))
-//         ) : (
-//           <p className="col-span-3 text-center text-gray-500">
-//             No academies found.
-//           </p>
-//         )}
-//       </div>
-//     </div>
-//   );
-// }
-
-
 
 "use client";
 
@@ -162,9 +27,7 @@ export default function HomePage() {
       academy.type.toLowerCase().includes(searchLower) ||
       academy.address.city.toLowerCase().includes(searchLower) ||
       academy.phone?.toString().includes(searchLower);
-    // optional mobile
-
-    // ✅ rating filter (separate dropdown)
+    
     let matchesRating = true;
     if (ratingFilter !== null) {
       matchesRating = Math.floor(academy.average_rating ?? 0) === ratingFilter;
@@ -178,7 +41,7 @@ export default function HomePage() {
       <h1 className="text-3xl font-bold mb-6 text-center">Academy</h1>
 
       <div className="flex flex-col md:flex-row justify-center gap-4 mb-8">
-        {/* 🔎 Search box */}
+      
         <input
           type="text"
           placeholder="Search by city, name, type, or phone..."
@@ -187,7 +50,6 @@ export default function HomePage() {
           className="w-full md:w-1/2 p-3 border rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
 
-        {/* ⭐ Rating dropdown */}
         <select
           value={ratingFilter ?? ""}
           onChange={(e) =>

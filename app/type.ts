@@ -40,8 +40,8 @@ export interface ArtProgram {
 }
 
 export interface SportsProgram {
-  sname: string;              // Cricket, Football
-  category?: string;         // Indoor / Outdoor
+  sname: string;             
+  category?: string;         
   team_size?: number;
   level?: "Beginner" | "Intermediate" | "Advanced";
 }

@@ -40,11 +40,11 @@ export default function AcademicCard({
           )}
         </div>
 
-        {/* Address & Phone */}
+
         <p className="text-gray-600 mb-1">📍 {address.line1}, {address.city}, {address.state}, {address.zip}</p>
         <p className="text-gray-700 mb-2">📞 {phone}</p>
 
-        {/* Rating */}
+
         <div className="flex items-center text-yellow-400 mb-4">
           {Array.from({ length: 5 }, (_, i) => (
             <span key={i} className="text-lg">{i < Math.round(average_rating || 0) ? "★" : "☆"}</span>
@@ -52,7 +52,6 @@ export default function AcademicCard({
           <span className="ml-2 text-sm text-gray-600">{average_rating?.toFixed(1)}</span>
         </div>
 
-        {/* Trainers */}
         {trainers.length > 0 && (
           <div className="mb-4">
             <h3 className="font-semibold text-purple-600 mb-1">👩‍🏫 Trainers</h3>
@@ -64,7 +63,7 @@ export default function AcademicCard({
           </div>
         )}
 
-        {/* Achievements */}
+
         {achievements.length > 0 && (
           <div className="mb-4">
             <h3 className="font-semibold text-green-600 mb-1">🏆 Achievements</h3>
@@ -76,7 +75,7 @@ export default function AcademicCard({
           </div>
         )}
 
-        {/* Art Programs */}
+
         {art_programs.length > 0 && (
           <div className="mb-4">
             <h3 className="font-semibold text-purple-600 mb-1">🏆 Art Programs</h3>
@@ -90,7 +89,7 @@ export default function AcademicCard({
           </div>
         )}
 
-        {/* Sports Programs */}
+
         {sports_programs.length > 0 && (
           <div className="mb-4">
             <h3 className="font-semibold text-green-600 mb-1">⚽ Sports Programs</h3>
