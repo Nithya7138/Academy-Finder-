@@ -6,7 +6,6 @@ import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
-import academicRoute from './app/api/academic/route.js';
 
 // Load environment variables
 dotenv.config({ path: '.env.local' });
@@ -31,8 +30,6 @@ conn.on('error', (err) => {
 app.get('/', (req, res) => {
   res.send('academic');
 });
-
-academicRoute(app);
 
 const PORT = process.env.PORT;
 
