@@ -15,8 +15,14 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// const dbconnect = process.env.ATLASMONGODB_URI;
-const dbconnect = process.env.MONGODB_LOCAL && process.env.MONGODB_LOCAL;
+const dbconnect = process.env.ATLASMONGODB_URI;
+
+if (!dbconnect) {
+  console.error('MongoDB connection string not found. Please check your .env.local file.');
+  process.exit(1);
+}
+
+console.log('Connecting to MongoDB...');
 mongoose.connect(dbconnect);
 const conn = mongoose.connection;
 

@@ -1,0 +1,9 @@
+[
+  {
+    "name": "Test Academy",
+    "type": "Sports",
+    "address": { "city": "Chennai" },
+    "phone": "9876543210",
+    "average_rating": 4
+  }
+]
