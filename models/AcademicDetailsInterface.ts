@@ -41,3 +41,4 @@ export interface AcademicDetails {
   art_programs?: ArtProgram[];
   sports_programs?: SportsProgram[];
 }
+// 
