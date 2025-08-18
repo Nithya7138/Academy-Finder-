@@ -1,6 +1,5 @@
-import academie from "../../models/AcademicDetails.js";
-
-const addacademi = async (req, res) => {
+import academie from "../../../models/AcademicDetails";
+exports.addacademi = async (req, res) => {
 
 const academicData = {
   name: req.body.name,
@@ -24,5 +23,3 @@ const academicData = {
   }
 
 }
-
-export default { addacademi };
