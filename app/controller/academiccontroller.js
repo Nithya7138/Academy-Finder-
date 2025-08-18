@@ -57,14 +57,14 @@ export const getAcademyTypes = async (req, res) => {
 export const getAcademyType = async (req, res) => {
   const { typename } = req.params;
   try {
-    const Academy = await academie.findOne({ type: typename });
-    if (!Academy) {
-      return res.status(404).json({ message: "Academy type not found" });
+    const academies = await academie.find({ type: typename });
+    if (!academies || academies.length === 0) {
+      return res.status(404).json({ message: "No academies found with this type" });
     }
-    res.status(200).json({ message: "Academy type retrieved successfully", data: Academy });
+    res.status(200).json({ message: "Academies retrieved successfully", data: academies });
   } catch (error) {
-    console.error("Error retrieving academy type:", error);
-    res.status(500).json({ message: "Error retrieving academy type", error: error.message });
+    console.error("Error retrieving academies by type:", error);
+    res.status(500).json({ message: "Error retrieving academies by type", error: error.message });
   }
 };
 
@@ -85,8 +85,14 @@ export const getAcademyById = async (req, res) => {
 export const getAcademyByRating = async (req, res) => {
   const { rating } = req.params;
   try {
-    const Academy = await academie.find({ average_rating: rating });
-    if (!Academy) {
+    // Convert rating to number and find academies with rating greater than or equal to the specified value
+    const ratingValue = parseFloat(rating);
+    if (isNaN(ratingValue)) {
+      return res.status(400).json({ message: "Invalid rating value" });
+    }
+    
+    const Academy = await academie.find({ average_rating: { $gte: ratingValue } });
+    if (!Academy || Academy.length === 0) {
       return res.status(404).json({ message: "Academy not found" });
     }
     res.status(200).json({ message: "Academy retrieved successfully", data: Academy });
@@ -99,8 +105,8 @@ export const getAcademyByRating = async (req, res) => {
 export const getAcademyByCity = async (req, res) => {
   const { city } = req.params;
   try {
-    const Academy = await academie.find({ city });
-    if (!Academy) {
+    const Academy = await academie.find({ "address.city": city });
+    if (!Academy || Academy.length === 0) {
       return res.status(404).json({ message: "Academy not found" });
     }
     res.status(200).json({ message: "Academy retrieved successfully", data: Academy });
@@ -116,8 +122,8 @@ export const getAcademyByCity = async (req, res) => {
 export const getAcademyBySport = async (req, res) => {
   const { sport } = req.params;
   try {
-    const Academy = await academie.find({ sports_programs: sport });
-    if (!Academy) {
+    const Academy = await academie.find({ "sports_programs.sname": sport });
+    if (!Academy || Academy.length === 0) {
       return res.status(404).json({ message: "Academy not found" });
     }
     res.status(200).json({ message: "Academy retrieved successfully", data: Academy });
@@ -130,8 +136,8 @@ export const getAcademyBySport = async (req, res) => {
 export const getAcademyByArt = async (req, res) => {
   const { art } = req.params;
   try {
-    const Academy = await academie.find({ art_programs: art });
-    if (!Academy) {
+    const Academy = await academie.find({ "art_programs.aname": art });
+    if (!Academy || Academy.length === 0) {
       return res.status(404).json({ message: "Academy not found" });
     }
     res.status(200).json({ message: "Academy retrieved successfully", data: Academy });

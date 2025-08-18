@@ -15,6 +15,9 @@ export default function AcademicCard({
   art_programs = [],
   sports_programs = []
 }: AcademicCardProps) {
+  // This function is not currently used but may be needed later
+  // Commenting it out to avoid the unused variable warning
+  /*
   const renderPrograms = (title: string, programs: { aname?: string; sname?: string; }[], keyName: 'aname' | 'sname') =>
     programs.length > 0 && (
       <div className="mt-2">
@@ -26,6 +29,7 @@ export default function AcademicCard({
         </ul>
       </div>
     );
+  */
 
 
   return (

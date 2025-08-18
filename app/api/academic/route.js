@@ -1,37 +1,10 @@
-// import connectMongo from "../../../utils/connectMongos";
-// import academicmodel from "../../../models/AcademicDetails";
-
-// export async function GET() {
-//   try {
-//     await connectMongo();
-//     const result = await academicmodel.find({});   
-//     return Response.json(result);
-//   } catch (error) {
-//     return Response.json({ message: error.message });
-//   }
-// }
-
-
-// import { addacademi } from "../../controller/academiccontroller.js";
-
-// export default function academicRoutes(app){
-//   app.post("/api/academic/add", addacademi);
-// }
-
-// export default function academicRoutes(app){
-//   app.get("/api/academic/getAll", getacademi);
-// }
-
-
-import { addacademi, getAcademicDetails, getAcademyTypes, getAcademyType,getAcademyById,getAcademyByArt,getAcademyBySport,getAcademyByCity,getAcademyByRating } from "../../controller/academiccontroller.js";
+import { addacademi, getAcademicDetails, getAcademyTypes, getAcademyType, getAcademyById, getAcademyByArt, getAcademyBySport, getAcademyByCity, getAcademyByRating } from "../../controller/academiccontroller.js";
 
 export default function academicRoutes(app) {
   
   app.post("/api/academic/add", addacademi);
 
-  
   app.get("/api/academic/getAll", getAcademicDetails);
-
 
   app.get("/api/academic/getTypes", getAcademyTypes);
 
