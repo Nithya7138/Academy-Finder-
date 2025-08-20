@@ -35,9 +35,10 @@ const testData = {
   sports_programs: []
 };
 
-async function testAPI() {
+// Test creating a new academy
+async function testCreateAcademy() {
   try {
-    const response = await fetch('http://localhost:8080/api/academic/add', {
+    const response = await fetch('http://localhost:3001/api/academic', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -46,10 +47,34 @@ async function testAPI() {
     });
 
     const result = await response.json();
-    console.log('API Response:', result);
+    console.log('Academy created successfully:');
+    console.log(result);
+    return result;
   } catch (error) {
-    console.error('Error testing API:', error);
+    console.error('Error creating academy:', error);
   }
 }
 
-testAPI();
+// Test fetching all academies
+async function testGetAcademies() {
+  try {
+    const response = await fetch('http://localhost:3001/api/academic');
+    const result = await response.json();
+    console.log('Academies fetched successfully:');
+    console.log(result);
+    return result;
+  } catch (error) {
+    console.error('Error fetching academies:', error);
+  }
+}
+
+// Run the tests
+async function runTests() {
+  console.log('Creating a test academy...');
+  await testCreateAcademy();
+  
+  console.log('\nFetching all academies...');
+  await testGetAcademies();
+}
+
+runTests();

@@ -1,5 +1,6 @@
 import connectMongo from "../../../utils/connectMongos";
 import academicmodel from "../../../models/AcademicDetails";
+export const runtime = "nodejs";
 
 // GET /api/academic -> list all academies
 export async function GET() {
