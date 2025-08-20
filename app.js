@@ -14,8 +14,8 @@ dotenv.config({ path: '.env.local' });
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-// const dbconnect = process.env.ATLASMONGODB_URI;
-const dbconnect = "mongodb+srv://nithyaprasadk01:Nithya@70@cluster0.vd5k3sh.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+const dbconnect = process.env.ATLASMONGODB_URI;
+
 if (!dbconnect) {
   console.error('MongoDB connection string not found. Please check your .env.local file.');
   process.exit(1);
@@ -34,12 +34,12 @@ conn.on('error', (err) => {
 
 
 app.get('/', (req, res) => {
-  res.send('academic');
+  res.send('Academy Finder API is running');
 });
 
 academicRoute(app);
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3001;
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
