@@ -96,7 +96,7 @@ export default function HomePage() {
 
   useEffect(() => {
     axios
-      .get("/api/academic")
+      .get("/api/academic/route.js")
       .then((res) => {
         console.log("API Response:", res.data); // 👀 Debug
         // ✅ Always store array safely
