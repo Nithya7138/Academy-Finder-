@@ -14,7 +14,8 @@ dotenv.config({ path: '.env.local' });
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-const dbconnect = process.env.ATLASMONGODB_URI;
+const dbconnect = "mongodb+srv://nithyaprasadk01:Nithya%4070@cluster0.vd5k3sh.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+";
 
 if (!dbconnect) {
   console.error('MongoDB connection string not found. Please check your .env.local file.');
